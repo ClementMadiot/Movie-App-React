@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Search from "./components/Search";
 import Spinner from "./components/Spinner";
+import MovieCards from "./components/MovieCards";
 
 const API_BASE_URL = "https://api.themoviedb.org/3";
 const ACCESS_TOKEN = import.meta.env.VITE_API_READ_ACCESS_TOKEN;
@@ -48,7 +49,6 @@ const App = () => {
 
   useEffect(() => {
     fetchMovies();
-
   }, []);
 
   return (
@@ -74,23 +74,7 @@ const App = () => {
           ) : (
             <ul>
               {movieList.map((movie) => (
-                <li key={movie.id} className="movie-card text-white">
-                  <img
-                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                    alt={movie.title}
-                  />
-                  <h3>{movie.title}</h3>
-                  <div className="flex gap-2">
-                    <img
-                      src="star.svg"
-                      alt="stars"
-                      width="18px"
-                      height="18px"
-                      className="w-auto"
-                    />
-                    <p>{movie.vote_average}</p>
-                  </div>
-                </li>
+                <MovieCards key={movie.id} movie={movie} />
               ))}
             </ul>
           )}
