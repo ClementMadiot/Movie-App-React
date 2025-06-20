@@ -37,36 +37,37 @@ const MovieDetails = ({
       className="movie-list grid grid-cols-1 gap-y-6 gap-x-10"
       style={{ maxWidth: "800px", width: "100%" }}
     >
-      <li className="flex items-center">
-        <p className="text-light-200 min-w-[140px]">Generes</p>
+      <li className="flex items-center flex-wrap ">
+        <p className="text-light-200 min-w-[100px] sm:min-w-[140px]">Generes</p>
         {genres && genres.length > 0 ? (
           genres.map((genre) => (
-            <span key={genre.id}>
-              <p className="text-white font-semibold bg-blue-100 p-2 mr-2 rounded-md">
-                {displayValue(genre.name)}
-              </p>
-            </span>
+            <p
+              key={genre.id}
+              className="text-white font-semibold bg-blue-100 p-2 mr-1.5 sm:mr-2 rounded-md"
+            >
+              {displayValue(genre.name)}
+            </p>
           ))
         ) : (
           <p className="data-info">N/A</p>
         )}
       </li>
       <li className="flex ">
-        <p className="text-light-200 min-w-[140px]">Overview</p>
+        <p className="text-light-200 min-w-[100px] sm:min-w-[140px]">Overview</p>
         <p className="text-white leading-relaxed">{displayValue(overview)}</p>
       </li>
       <li className="flex">
-        <p className="text-light-200 min-w-[140px]">Release date</p>
+        <p className="text-light-200 min-w-[100px] sm:min-w-[140px]">Release date</p>
         <p className="data-info">{formatFullDate(release_date)}</p>
       </li>
       <li className="flex ">
-        <p className="text-light-200 min-w-[140px]">Countries</p>
+        <p className="text-light-200 min-w-[100px] sm:min-w-[140px]">Countries</p>
         {production_countries && production_countries.length > 0 ? (
           production_countries.map((countrie, index) => (
             <p key={countrie.id} className="data-info">
               {displayValue(countrie.name)}{" "}
               {index < production_countries.length - 1 && (
-                <span className="dot mx-1">•</span>
+                <span className="dot">•</span>
               )}
             </p>
           ))
@@ -75,17 +76,17 @@ const MovieDetails = ({
         )}
       </li>
       <li className="flex">
-        <p className="text-light-200 min-w-[140px]">Status</p>
+        <p className="text-light-200 min-w-[100px] sm:min-w-[140px]">Status</p>
         <p className="data-info">{displayValue(status)}</p>
       </li>
       <li className="flex">
-        <p className="text-light-200 min-w-[140px]">Language</p>
+        <p className="text-light-200 min-w-[100px] sm:min-w-[140px]">Language</p>
         {spoken_languages && spoken_languages.length > 0 ? (
           spoken_languages.map((lang, index) => (
             <p key={`lang-${index}`} className="data-info gap-2">
               {lang.english_name}
               {index < spoken_languages.length - 1 && (
-                <span className="dot mx-1">•</span>
+                <span className="dot">•</span>
               )}
             </p>
           ))
@@ -94,26 +95,26 @@ const MovieDetails = ({
         )}
       </li>
       <li className="flex ">
-        <p className="text-light-200 min-w-[140px]">Budget</p>
+        <p className="text-light-200 min-w-[100px] sm:min-w-[140px]">Budget</p>
         <p className="data-info">{formatRevenue(budget)}</p>
       </li>
       <li className="flex ">
-        <p className="text-light-200 min-w-[140px]">Revenue</p>
+        <p className="text-light-200 min-w-[100px] sm:min-w-[140px]">Revenue</p>
         <p className="data-info">{formatRevenue(revenue)}</p>
       </li>
       <li className="flex ">
-        <p className="text-light-200 min-w-[140px]">Tagline</p>
+        <p className="text-light-200 min-w-[100px] sm:min-w-[140px]">Tagline</p>
         <p className="data-info">{displayValue(tagline)}</p>
       </li>
       <li className="flex gap-y-1">
-        <p className="text-light-200 max-w-[140px]">Productions Companies</p>
+        <p className="text-light-200 max-w-[120px] md:max-w-[140px]">Productions Companies</p>
         <div className="flex flex-wrap gap-x-2">
           {production_companies && production_companies.length > 0 ? (
             production_companies.map((company, index) => (
               <p key={company.id} className="data-info">
                 {displayValue(company.name)}
                 {index < production_companies.length - 1 && (
-                  <span className="dot mx-1">•</span>
+                  <span className="dot">•</span>
                 )}
               </p>
             ))

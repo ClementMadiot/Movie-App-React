@@ -160,6 +160,9 @@
       @apply font-semibold text-light-200
     }
   }
+  .dot {
+    @apply mx-1 hidden md:inline-block
+  }
 
 }
 

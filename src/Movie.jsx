@@ -83,18 +83,13 @@ const Movie = () => {
               : "/no-movie.png"
           }
           alt={displayValue(movie.title)}
-          style={{
-            maxWidth: "300px",
-            maxHeight: "400px",
-            borderRadius: "12px",
-          }}
+          className="rounded-xl object-cover max-w-[300px] lg:max-w-[300px] lg:max-h-[400px] md:max-w-[200px] md:max-h-[300px]"
         />
         {movie.backdrop_path && (
           <img
             src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
             alt={displayValue(movie.title)}
-            className="w-full rounded-xl ml-6 object-cover"
-            style={{ maxHeight: "400px" }}
+            className="w-full rounded-xl ml-6 object-cover lg:max-h-[400px] md:block md:max-h-[300px] hidden"
           />
         )}
       </article>
