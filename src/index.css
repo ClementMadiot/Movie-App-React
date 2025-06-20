@@ -13,6 +13,8 @@
 
   --color-dark-100: #0f0d23;
 
+  --color-blue-100: #221F3D;
+
   --font-dm-sans: DM Sans, sans-serif;
 
   --breakpoint-xs: 480px;
@@ -140,10 +142,33 @@
       @apply text-gray-100 font-medium text-base;
     }
   }
+
+  .movie-header {
+    & img {
+      @apply w-auto
+    }
+    & span {
+      @apply text-sm text-light-200;
+    }
+    & p {
+      @apply text-lg text-light-200 ;
+    }
+  }
+
+  .movie-list {    
+    & .data-info {
+      @apply font-semibold text-light-200
+    }
+  }
+
 }
 
 @utility text-gradient {
   @apply bg-linear-to-r from-[#D6C7FF] to-[#AB8BFF] bg-clip-text text-transparent;
+}
+
+@utility button-gradient {
+  @apply bg-linear-to-r from-[#D6C7FF] to-[#AB8BFF] p-3 rounded-lg font-bold
 }
 
 @utility fancy-text {

@@ -1,8 +1,20 @@
+import { Link } from "react-router-dom";
+
 const MovieCards = ({
-  movie: { title, poster_path, vote_average, original_language, release_date },
+  movie: {
+    title,
+    poster_path,
+    vote_average,
+    original_language,
+    release_date,
+    id,
+  },
 }) => {
   return (
-    <li className="movie-card">
+    <Link
+      to={`/movie/${id}`}
+      className="movie-card cursor-pointer"
+    >
       <img
         src={
           poster_path
@@ -25,15 +37,15 @@ const MovieCards = ({
             />
             <p>{vote_average ? vote_average.toFixed(1) : "N/A"}</p>
           </div>
-          <span>•</span>
+          <span className="dot">•</span>
           <p className="lang">{original_language}</p>
-          <span>•</span>
+          <span className="dot">•</span>
           <p className="year">
             {release_date ? release_date.split("-")[0] : "N/A"}
           </p>
         </div>
       </div>
-    </li>
+    </Link>
   );
 };
 

@@ -4,17 +4,7 @@ import Spinner from "./components/Spinner";
 import MovieCards from "./components/MovieCards";
 import { useDebounce } from "react-use";
 import { getTrendingMovies, updateSearchCount } from "./appwrite";
-
-const API_BASE_URL = "https://api.themoviedb.org/3";
-const ACCESS_TOKEN = import.meta.env.VITE_API_READ_ACCESS_TOKEN;
-
-const API_OPTIONS = {
-  method: "GET",
-  headers: {
-    accept: "application/json",
-    Authorization: `Bearer ${ACCESS_TOKEN}`,
-  },
-};
+import { API_BASE_URL, API_OPTIONS } from "../tmdb";
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
