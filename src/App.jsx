@@ -20,7 +20,6 @@ const App = () => {
   const fetchMovies = async (query = "") => {
     setIsLoading(true);
     setErrorMessage("");
-    updateSearchCount();
 
     try {
       const endpoint = query
@@ -31,7 +30,7 @@ const App = () => {
       if (!responce.ok) throw new Error("Failed to fetch movies");
 
       const data = await responce.json();
-      console.log(data);
+      // console.log(data);
 
       if (data.response === "False") {
         setErrorMessage(`Error data: ${data.Error}`);
@@ -42,6 +41,7 @@ const App = () => {
 
       setMovieList(data.results || []);
 
+      // Only update search count if query is not empty and there are results
       if (query && data.results.length > 0) {
         // Update search count in Appwrite database
         await updateSearchCount(query, data.results[0]);
@@ -91,7 +91,7 @@ const App = () => {
 
             <ul>
               {trendingMovies.map((movie, index) => (
-                <li key={movie.id}>
+                <li key={movie.id || index}>
                   <p>{index + 1}</p>
                   <img
                     src={`https://image.tmdb.org/t/p/w500${movie.poster_url}`}
