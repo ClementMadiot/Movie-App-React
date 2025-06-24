@@ -13,6 +13,7 @@ const MovieDetails = ({
   },
   displayValue,
 }) => {
+  
   // Helper to format revenue in millions if needed
   const formatRevenue = (revenue) => {
     if (!revenue || isNaN(revenue)) return "N/A";
@@ -64,7 +65,7 @@ const MovieDetails = ({
         <p className="text-light-200 min-w-[100px] sm:min-w-[140px]">Countries</p>
         {production_countries && production_countries.length > 0 ? (
           production_countries.map((countrie, index) => (
-            <p key={countrie.id} className="data-info">
+            <p key={countrie.id || index} className="data-info">
               {displayValue(countrie.name)}{" "}
               {index < production_countries.length - 1 && (
                 <span className="dot">•</span>

@@ -19,7 +19,7 @@ const Movie = () => {
       if (!res.ok) throw new Error("Failed to fetch movie details");
 
       const data = await res.json();
-      console.log(data);
+      // console.log(data);
 
       setMovie(data);
     };
@@ -36,10 +36,17 @@ const Movie = () => {
     return `${h}h ${m}m`;
   };
 
-    // Helper to display "N/A" for empty strings or falsy values
+  // Helper to display "N/A" for empty strings or falsy values
   const displayValue = (value) => {
     if (value === "" || value === null || value === undefined) return "N/A";
     return value;
+  };
+
+  //Helper to format vote count in thousands
+  const formatVoteCount = (count) => {
+    if (!count || isNaN(count)) return "N/A";
+    if( count <= 999 ) return `${count}k`;
+    return `${(count / 1000).toFixed(1)}M`;
   };
 
   return (
@@ -70,11 +77,14 @@ const Movie = () => {
           />
           <p className="text-white font-bold">
             {movie.vote_average?.toFixed(1)}
-            <span className=" font-normal">/10 ({movie.vote_count}k)</span>
+            <span className=" font-normal">
+              /10 ({formatVoteCount(movie.vote_count)})
+            </span>
           </p>
         </article>
       </header>
 
+      {/* Images */}
       <article className="flex justify-center">
         <img
           src={
@@ -93,7 +103,7 @@ const Movie = () => {
           />
         )}
       </article>
-
+      {/* Details */}
       <article className="flex justify-between flex-col gap-12 lg:flex-row lg:gap-0">
         <MovieDetails movie={movie} displayValue={displayValue} />
         <div className="flex items-start">
